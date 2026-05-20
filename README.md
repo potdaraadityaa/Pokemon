@@ -17,28 +17,9 @@ The application divides workflows into dedicated backend microservices and stati
 
 ```mermaid
 flowchart TD
-    subgraph Client["Client Browser (Port 80 / 5173)"]
-        UI["React 19 Single Page App"]
-    end
-
-    subgraph Host["Unified Orchestration Topology"]
-        API["Express Cache API (Port 3000)"]
-        LRU["In-Memory LRU Cache"]
-        RedisDB["Redis Server (Port 6379)"]
-    end
-
-    subgraph External["External Service"]
-        Poke["PokeAPI.co (REST v2)"]
-    end
-
-    UI -->|1. Client API Requests| API
-    API -->|2. Check Redis Cache| RedisDB
-    RedisDB -->|Cache Hit (JSON)| UI
-    RedisDB -.->|Cache Miss| LRU
-    LRU -->|3. Check In-Memory Caches| API
-    API -.->|Cache Miss / Timeout| Poke
-    Poke -->|4. Return Fresh Payload| API
-    API -->|5. Store Result & Sync| RedisDB
+    A[React Frontend] --> B[Express Backend]
+    B --> C[Redis Cache]
+    B --> D[PokeAPI]
 ```
 
 ## ⚡ Enterprise Features Checklist
