@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <!-- Futuristic radial glow gradient -->
+    <radialGradient id="pokeballGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15" />
+      <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+    </radialGradient>
+    
+    <!-- Linear border gradient matching our glassmorphism aesthetics -->
+    <linearGradient id="cyberBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient glow background circle -->
+  <circle cx="50%" cy="50%" r="48%" fill="url(#pokeballGlow)" />
+
+  <!-- Main outer ring of the Pokéball -->
+  <circle cx="50%" cy="50%" r="40%" fill="none" stroke="url(#cyberBorder)" stroke-width="2.5" stroke-dasharray="0 0" />
+
+  <!-- Horizontal center divider lines with spacing for center button -->
+  <path d="M 12 50 L 38 50" stroke="url(#cyberBorder)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 62 50 L 88 50" stroke="url(#cyberBorder)" stroke-width="2.5" stroke-linecap="round" />
+
+  <!-- Outer ring of the center button -->
+  <circle cx="50%" cy="50%" r="11%" fill="#0a0a0a" stroke="url(#cyberBorder)" stroke-width="2.5" />
+
+  <!-- Glowing inner core of the center button -->
+  <circle cx="50%" cy="50%" r="5%" fill="#8b5cf6" opacity="0.7">
+    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3s" repeatCount="indefinite" />
+  </circle>
+</svg>
